@@ -1,0 +1,20 @@
+Bus R
+
+M31, M15, M79, M86, M96, M66
+
+http://api.prod.obanyc.com/api/siri/vehicle-monitoring.json?&LineRef=MTA%20NYCT_M31&key=adf3b381-85b5-48b9-a049-32c335108f6e
+
+For every call we need:
+
+latitude, longitude, route or lineref, DataFrameRef, Directionref, MTA_M150342, progressrate, vehicleref, recordedattime
+
+Recording 2:15 - 3:15
+
+//Query for one route
+{"MonitoredVehicleJourney.FramedVehicleJourneyRef.DatedVehicleJourneyRef":/089100_M96_408/}
+
+//Query for one route "at stop"
+{"MonitoredVehicleJourney.FramedVehicleJourneyRef.DatedVehicleJourneyRef":/089100_M96_408/,"MonitoredVehicleJourney.MonitoredCall.Extensions.Distances.PresentableDistance":/at stop/}
+
+//Import CSV to MongoDB
+mongoimport --db UESbuses --collection stop_times --type csv --headerline stop_times.txt 
